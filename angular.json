@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "moduleless": "apps/moduleless",
+    "moduleless-e2e": "apps/moduleless-e2e"
+  }
+}

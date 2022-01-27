@@ -1,0 +1,28 @@
+{
+  "root": "apps/moduleless-e2e",
+  "sourceRoot": "apps/moduleless-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/moduleless-e2e/cypress.json",
+        "devServerTarget": "moduleless:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "moduleless:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/moduleless-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["moduleless"]
+}
