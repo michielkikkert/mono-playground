@@ -1,11 +1,10 @@
 import {
     Component,
-    ComponentRef,
     OnDestroy,
     ViewChild,
     ViewContainerRef,
 } from '@angular/core';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -36,22 +35,25 @@ export class AppComponent implements OnDestroy {
         instance.data$ = this.data$;
 
         // Listen to the delete me request from the inserted component and remove from the viewContainer.
-        this.subs.push(instance.deleteMe.subscribe(() => {
-            this.viewContainer.remove(
-                this.viewContainer.indexOf(compRef.hostView)
-            );
-        }));
+        this.subs.push(
+            instance.deleteMe.subscribe(() => {
+                this.viewContainer.remove(
+                    this.viewContainer.indexOf(compRef.hostView)
+                );
+            })
+        );
         this.counter++;
     }
 
     loadSharedData() {
-        this.subs.push(this.http
-            .get('https://jsonplaceholder.typicode.com/todos/1')
-            .subscribe((data) => this.data$.next(data))
+        this.subs.push(
+            this.http
+                .get('https://jsonplaceholder.typicode.com/todos/1')
+                .subscribe((data) => this.data$.next(data))
         );
     }
 
     ngOnDestroy() {
-       this.subs.map( sub => sub.unsubscribe() );
+        this.subs.map((sub) => sub.unsubscribe());
     }
 }

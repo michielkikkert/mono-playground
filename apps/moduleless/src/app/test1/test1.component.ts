@@ -1,5 +1,5 @@
 import {
-  Component, ComponentRef,
+  Component,
   EventEmitter,
   Input,
   NgModule,
@@ -16,8 +16,8 @@ import { CommonModule } from '@angular/common';
 })
 export class Test1Component implements OnInit {
     @Input() id!: number;
-    @Input() data$!: Observable<any>;
-    @Output() deleteMe: EventEmitter<ComponentRef<any>> = new EventEmitter();
+    @Input() data$!: Observable<unknown>;
+    @Output() deleteMe: EventEmitter<null> = new EventEmitter();
 
     ngOnInit(): void {
         console.log('init', this.id);
@@ -33,4 +33,5 @@ export class Test1Component implements OnInit {
     declarations: [Test1Component],
     imports: [CommonModule],
 })
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 class Test1Module {}
