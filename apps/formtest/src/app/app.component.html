@@ -1,7 +1,7 @@
 <div class="container">
     <mat-card>
         <form [formGroup]="form" class="form-stacked" *ngIf="disabled$ | async as disabled">
-            <div>{{disabled | json}}</div>
+            <div>Disabled: {{disabled | json}}</div>
             <mat-form-field appearance="fill">
                 <mat-label>Input</mat-label>
                 <input matInput formControlName="control1" />
