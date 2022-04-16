@@ -21,38 +21,38 @@ export class AppComponent implements OnInit {
 
     disabled$!: Observable<Record<string, boolean>>;
 
-    ngOnInit() {
-        // setup
-        console.log('init');
+    ngOnInit(): void {
+      this.disabled$ = this.setupRules(this.form, this.rules);
+    }
 
-        this.disabled$ = this.form.valueChanges.pipe(
-            startWith(this.form.value),
+    setupRules(form: FormGroup, rules: Array<Array<string>>): Observable<Record<string, boolean>> {
+        return form.valueChanges.pipe(
+            startWith(form.value),
             map((form) => {
-              let ruleSet: string[] = [];
-              const conditions: Record<string, boolean> = {};
+                let ruleSet: string[] = [];
+                const conditions: Record<string, boolean> = {};
                 Object.entries(form).map(([name, value]: [string, unknown]) => {
-                    // find the matching ruleset for the current control
+                    // Find the matching ruleset for the current control
                     if (value) {
-                        ruleSet = this.rules.find((rules) => rules.indexOf(name) > -1) || [];
+                        ruleSet = rules.find((rules) => rules.indexOf(name) > -1) || [];
                     }
-                    // default is not disabled
+                    // Add to Record, default is not disabled
                     conditions[name] = false;
-
                 });
-                return {ruleSet, conditions};
+                return { ruleSet, conditions };
             }),
-            map(({ruleSet, conditions}) => {
+            map(({ ruleSet, conditions }) => {
                 // Loop through controls and determine if in ruleSet
-                Object.entries(this.form.controls).map( ([name, control]) => {
-                    if( ruleSet.indexOf(name) > -1 || ruleSet.length === 0) {
-                        control.enable({onlySelf: true});
+                Object.entries(this.form.controls).map(([name, control]) => {
+                    // Current control is in ruleset (or no ruleset is found), enable the control.
+                    if (ruleSet.indexOf(name) > -1 || ruleSet.length === 0) {
+                        control.enable({ onlySelf: true });
                         conditions[name] = false;
-                    } else {
-                      control.disable({onlySelf: true});
-                      conditions[name] = true;
+                    } else { // current control is not in ruleset. disable it.
+                        control.disable({ onlySelf: true });
+                        conditions[name] = true;
                     }
-                })
-
+                });
                 return conditions;
             })
         );
