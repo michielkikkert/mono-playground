@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
             }),
             map(({ ruleSet, conditions }) => {
                 // Loop through controls and determine if in ruleSet
-                Object.entries(this.form.controls).map(([name, control]) => {
+                Object.entries(form.controls).map(([name, control]) => {
                     // Current control is in ruleset (or no ruleset is found), enable the control.
                     if (ruleSet.indexOf(name) > -1 || ruleSet.length === 0) {
                         control.enable({ onlySelf: true });
