@@ -4,7 +4,7 @@
             <div>Disabled: {{disabled | json}}</div>
             <mat-form-field appearance="fill">
                 <mat-label>Input</mat-label>
-                <input matInput formControlName="control1" />
+                <input matInput formControlName="control1" /> <!-- Functionality uses control.enable() / disable() by default. But if you really want to use [disabled] in the template (you shouldn't really) you can be using the generated disabled observable like [disabled]="disabled['control1']" here -->
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Input</mat-label>
