@@ -1,0 +1,22 @@
+<div class="container">
+  <mat-card>
+
+
+    <h1>H1 met tooltip
+      <ng-container *monoPlaygroundTooltipDirective="{contentId: 'inline', position: 'before'}"></ng-container>
+    </h1>
+
+    <form [formGroup]="form" class="form-stacked">
+
+      <mat-form-field appearance="fill" *monoPlaygroundTooltipDirective="{contentId: 'after'}">
+        <mat-label>Input</mat-label>
+        <input matInput formControlName="control1" />
+      </mat-form-field>
+      <br />
+      <mat-form-field appearance="fill" *monoPlaygroundTooltipDirective="{contentId: 'before', position: 'before'}">
+        <mat-label>Input</mat-label>
+        <input matInput formControlName="control1" />
+      </mat-form-field>
+    </form>
+  </mat-card>
+</div>

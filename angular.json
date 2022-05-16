@@ -1,7 +1,8 @@
 {
-  "version": 2,
-  "projects": {
-    "formtest": "apps/formtest",
-    "moduleless": "apps/moduleless"
-  }
+    "version": 2,
+    "projects": {
+        "formtest": "apps/formtest",
+        "moduleless": "apps/moduleless",
+        "tooltip-directive": "apps/tooltip-directive"
+    }
 }
