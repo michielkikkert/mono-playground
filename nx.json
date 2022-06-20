@@ -42,7 +42,7 @@
       "skipTests": true
     }
   },
-  "defaultProject": "tabs",
+  "defaultProject": "wc-counter",
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
     "build": {
