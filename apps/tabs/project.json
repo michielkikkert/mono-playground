@@ -1,24 +1,21 @@
 {
     "projectType": "application",
-    "root": "apps/tooltip-directive",
-    "sourceRoot": "apps/tooltip-directive/src",
+    "root": "apps/tabs",
+    "sourceRoot": "apps/tabs/src",
     "prefix": "mono-playground",
     "targets": {
         "build": {
             "executor": "@angular-devkit/build-angular:browser",
             "outputs": ["{options.outputPath}"],
             "options": {
-                "outputPath": "dist/apps/tooltip-directive",
-                "index": "apps/tooltip-directive/src/index.html",
-                "main": "apps/tooltip-directive/src/main.ts",
-                "polyfills": "apps/tooltip-directive/src/polyfills.ts",
-                "tsConfig": "apps/tooltip-directive/tsconfig.app.json",
+                "outputPath": "dist/apps/tabs",
+                "index": "apps/tabs/src/index.html",
+                "main": "apps/tabs/src/main.ts",
+                "polyfills": "apps/tabs/src/polyfills.ts",
+                "tsConfig": "apps/tabs/tsconfig.app.json",
                 "inlineStyleLanguage": "scss",
-                "assets": ["apps/tooltip-directive/src/favicon.ico", "apps/tooltip-directive/src/assets"],
-                "styles": [
-                    "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-                    "apps/tooltip-directive/src/styles.scss"
-                ],
+                "assets": ["apps/tabs/src/favicon.ico", "apps/tabs/src/assets"],
+                "styles": ["apps/tabs/src/styles.scss"],
                 "scripts": []
             },
             "configurations": {
@@ -37,8 +34,8 @@
                     ],
                     "fileReplacements": [
                         {
-                            "replace": "apps/tooltip-directive/src/environments/environment.ts",
-                            "with": "apps/tooltip-directive/src/environments/environment.prod.ts"
+                            "replace": "apps/tabs/src/environments/environment.ts",
+                            "with": "apps/tabs/src/environments/environment.prod.ts"
                         }
                     ],
                     "outputHashing": "all"
@@ -58,10 +55,10 @@
             "executor": "@angular-devkit/build-angular:dev-server",
             "configurations": {
                 "production": {
-                    "browserTarget": "tooltip-directive:build:production"
+                    "browserTarget": "tabs:build:production"
                 },
                 "development": {
-                    "browserTarget": "tooltip-directive:build:development"
+                    "browserTarget": "tabs:build:development"
                 }
             },
             "defaultConfiguration": "development"
@@ -69,20 +66,20 @@
         "extract-i18n": {
             "executor": "@angular-devkit/build-angular:extract-i18n",
             "options": {
-                "browserTarget": "tooltip-directive:build"
+                "browserTarget": "tabs:build"
             }
         },
         "lint": {
             "executor": "@nrwl/linter:eslint",
             "options": {
-                "lintFilePatterns": ["apps/tooltip-directive/src/**/*.ts", "apps/tooltip-directive/src/**/*.html"]
+                "lintFilePatterns": ["apps/tabs/src/**/*.ts", "apps/tabs/src/**/*.html"]
             }
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/apps/tooltip-directive"],
+            "outputs": ["coverage/apps/tabs"],
             "options": {
-                "jestConfig": "apps/tooltip-directive/jest.config.js",
+                "jestConfig": "apps/tabs/jest.config.js",
                 "passWithNoTests": true
             }
         }

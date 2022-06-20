@@ -3,6 +3,7 @@
     "projects": {
         "formtest": "apps/formtest",
         "moduleless": "apps/moduleless",
+        "tabs": "apps/tabs",
         "tooltip-directive": "apps/tooltip-directive"
     }
 }
