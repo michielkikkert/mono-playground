@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { map, Observable, startWith } from 'rxjs';
 
 @Component({
@@ -8,13 +8,13 @@ import { map, Observable, startWith } from 'rxjs';
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-    form: FormGroup = new FormGroup({
-        control1: new FormControl(''),
-        control2: new FormControl(''),
-        control3: new FormControl(''),
-        control4: new FormControl(''),
-        control5: new FormControl(''),
-        control6: new FormControl(''),
+    form: UntypedFormGroup = new UntypedFormGroup({
+        control1: new UntypedFormControl(''),
+        control2: new UntypedFormControl(''),
+        control3: new UntypedFormControl(''),
+        control4: new UntypedFormControl(''),
+        control5: new UntypedFormControl(''),
+        control6: new UntypedFormControl(''),
     });
 
     rules: Array<Array<string>> = [['control1', 'control2'], ['control3'], ['control4', 'control5', 'control6']];
@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
       this.disabled$ = this.setupRules(this.form, this.rules);
     }
 
-    setupRules(form: FormGroup, rules: Array<Array<string>>): Observable<Record<string, boolean>> {
+    setupRules(form: UntypedFormGroup, rules: Array<Array<string>>): Observable<Record<string, boolean>> {
         return form.valueChanges.pipe(
             startWith(form.value),
             map((form) => {

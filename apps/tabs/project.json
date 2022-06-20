@@ -1,6 +1,6 @@
 {
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "projectType": "application",
-    "root": "apps/tabs",
     "sourceRoot": "apps/tabs/src",
     "prefix": "mono-playground",
     "targets": {
@@ -79,7 +79,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/apps/tabs"],
             "options": {
-                "jestConfig": "apps/tabs/jest.config.js",
+                "jestConfig": "apps/tabs/jest.config.ts",
                 "passWithNoTests": true
             }
         }

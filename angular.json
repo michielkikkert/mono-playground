@@ -4,6 +4,7 @@
         "formtest": "apps/formtest",
         "moduleless": "apps/moduleless",
         "tabs": "apps/tabs",
-        "tooltip-directive": "apps/tooltip-directive"
+        "tooltip-directive": "apps/tooltip-directive",
+        "wc-counter": "apps/wc-counter"
     }
 }

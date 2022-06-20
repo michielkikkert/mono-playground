@@ -1,6 +1,6 @@
 {
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "projectType": "application",
-    "root": "apps/tooltip-directive",
     "sourceRoot": "apps/tooltip-directive/src",
     "prefix": "mono-playground",
     "targets": {
@@ -82,7 +82,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/apps/tooltip-directive"],
             "options": {
-                "jestConfig": "apps/tooltip-directive/jest.config.js",
+                "jestConfig": "apps/tooltip-directive/jest.config.ts",
                 "passWithNoTests": true
             }
         }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 @Component({
     selector: 'mono-playground-root',
@@ -8,7 +8,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class AppComponent {
     title = 'tooltip-directive';
-    form: FormGroup = new FormGroup({
-        control1: new FormControl(''),
+    form: UntypedFormGroup = new UntypedFormGroup({
+        control1: new UntypedFormControl(''),
     });
 }
