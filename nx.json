@@ -1,54 +1,47 @@
 {
-  "npmScope": "mono-playground",
-  "affected": {
-    "defaultBase": "main"
-  },
-  "cli": {
-    "packageManager": "npm"
-  },
-  "implicitDependencies": {
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
+    "npmScope": "mono-playground",
+    "affected": {
+        "defaultBase": "main"
     },
-    ".eslintrc.json": "*"
-  },
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx/tasks-runners/default",
-      "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ]
-      }
-    }
-  },
-  "generators": {
-    "@nrwl/angular:application": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "none"
+    "cli": {
+        "packageManager": "npm"
     },
-    "@nrwl/angular:library": {
-      "linter": "eslint",
-      "unitTestRunner": "jest"
+    "implicitDependencies": {
+        "package.json": {
+            "dependencies": "*",
+            "devDependencies": "*"
+        },
+        ".eslintrc.json": "*"
     },
-    "@nrwl/angular:component": {
-      "style": "scss",
-      "skipTests": true
+    "tasksRunnerOptions": {
+        "default": {
+            "runner": "nx/tasks-runners/default",
+            "options": {
+                "cacheableOperations": ["build", "lint", "test", "e2e"]
+            }
+        }
+    },
+    "generators": {
+        "@nrwl/angular:application": {
+            "style": "scss",
+            "linter": "eslint",
+            "unitTestRunner": "jest",
+            "e2eTestRunner": "none"
+        },
+        "@nrwl/angular:library": {
+            "linter": "eslint",
+            "unitTestRunner": "jest"
+        },
+        "@nrwl/angular:component": {
+            "style": "scss",
+            "skipTests": true
+        }
+    },
+    "defaultProject": "moduleless",
+    "$schema": "./node_modules/nx/schemas/nx-schema.json",
+    "targetDefaults": {
+        "build": {
+            "dependsOn": ["^build"]
+        }
     }
-  },
-  "defaultProject": "wc-counter",
-  "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "targetDefaults": {
-    "build": {
-      "dependsOn": [
-        "^build"
-      ]
-    }
-  }
 }
