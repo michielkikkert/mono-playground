@@ -48,7 +48,7 @@ export class AppComponent implements OnDestroy {
     loadSharedData() {
         this.subs.push(
             this.http
-                .get('https://jsonplaceholder.typicode.com/todos/1')
+                .get(`https://jsonplaceholder.typicode.com/todos/${(Math. floor(Math. random() * 10) + 1)}` )
                 .subscribe((data) => this.data$.next(data))
         );
     }

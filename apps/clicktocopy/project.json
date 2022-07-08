@@ -1,0 +1,87 @@
+{
+    "projectType": "application",
+    "sourceRoot": "apps/clicktocopy/src",
+    "prefix": "mono-playground",
+    "targets": {
+        "build": {
+            "executor": "@angular-devkit/build-angular:browser",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/apps/clicktocopy",
+                "index": "apps/clicktocopy/src/index.html",
+                "main": "apps/clicktocopy/src/main.ts",
+                "polyfills": "apps/clicktocopy/src/polyfills.ts",
+                "tsConfig": "apps/clicktocopy/tsconfig.app.json",
+                "inlineStyleLanguage": "scss",
+                "assets": ["apps/clicktocopy/src/favicon.ico", "apps/clicktocopy/src/assets"],
+                "styles": ["apps/clicktocopy/src/styles.scss"],
+                "scripts": []
+            },
+            "configurations": {
+                "production": {
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "500kb",
+                            "maximumError": "1mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "2kb",
+                            "maximumError": "4kb"
+                        }
+                    ],
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/clicktocopy/src/environments/environment.ts",
+                            "with": "apps/clicktocopy/src/environments/environment.prod.ts"
+                        }
+                    ],
+                    "outputHashing": "all"
+                },
+                "development": {
+                    "buildOptimizer": false,
+                    "optimization": false,
+                    "vendorChunk": true,
+                    "extractLicenses": false,
+                    "sourceMap": true,
+                    "namedChunks": true
+                }
+            },
+            "defaultConfiguration": "production"
+        },
+        "serve": {
+            "executor": "@angular-devkit/build-angular:dev-server",
+            "configurations": {
+                "production": {
+                    "browserTarget": "clicktocopy:build:production"
+                },
+                "development": {
+                    "browserTarget": "clicktocopy:build:development"
+                }
+            },
+            "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+            "executor": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+                "browserTarget": "clicktocopy:build"
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": ["apps/clicktocopy/**/*.ts", "apps/clicktocopy/**/*.html"]
+            }
+        },
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/apps/clicktocopy"],
+            "options": {
+                "jestConfig": "apps/clicktocopy/jest.config.ts",
+                "passWithNoTests": true
+            }
+        }
+    },
+    "tags": []
+}

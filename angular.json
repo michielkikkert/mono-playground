@@ -1,10 +1,10 @@
 {
     "version": 2,
     "projects": {
+        "clicktocopy": "apps/clicktocopy",
         "formtest": "apps/formtest",
         "moduleless": "apps/moduleless",
         "tabs": "apps/tabs",
-        "tooltip-directive": "apps/tooltip-directive",
-        "wc-counter": "apps/wc-counter"
+        "tooltip-directive": "apps/tooltip-directive"
     }
 }

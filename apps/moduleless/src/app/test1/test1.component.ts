@@ -1,11 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  NgModule,
-  OnInit,
-  Output
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 
@@ -13,6 +6,8 @@ import { CommonModule } from '@angular/common';
     selector: 'mono-playground-test1',
     templateUrl: './test1.component.html',
     styleUrls: ['./test1.component.scss'],
+    standalone: true,
+    imports: [CommonModule],
 })
 export class Test1Component implements OnInit {
     @Input() id!: number;
@@ -27,11 +22,3 @@ export class Test1Component implements OnInit {
         this.deleteMe.emit();
     }
 }
-
-// We need this @NgModule so we can make things like async and json pipes work through CommonModule
-@NgModule({
-    declarations: [Test1Component],
-    imports: [CommonModule],
-})
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-class Test1Module {}
