@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/cdk/overlay-prebuilt.css';
 mono-playground-tooltip {
 	opacity: 0;
 	transition: opacity 0.3s ease-in;
@@ -6,3 +7,14 @@ mono-playground-tooltip {
 		opacity: 1;
 	}
 }
+
+.maf-c2c-tooltip {
+	border: 1px #777777 solid;
+	border-radius: 10px;
+	padding: 3px;
+	max-width: 160px;
+	background-color: rgba(200, 200, 200, 0.8);
+	margin-top: 20px;
+}
+
+

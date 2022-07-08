@@ -1,56 +1,66 @@
-import { ComponentRef, Directive, ElementRef, HostBinding, HostListener, Input, ViewContainerRef } from '@angular/core';
+import {
+	ComponentRef,
+	Directive,
+	ElementRef,
+	HostBinding,
+	HostListener,
+	Input,
+	OnInit,
+	ViewContainerRef
+} from '@angular/core';
 import { TooltipComponent } from '../tooltip/tooltip.component';
 import { Clipboard } from '@angular/cdk/clipboard';
 
 @Directive({
     selector: '[monoPlaygroundCopyMe]',
 })
-export class CopyMeDirective {
+export class CopyMeDirective implements OnInit {
+    @Input() public monoPlaygroundCopyMe = '';
+    @HostBinding('class.has-tooltip') hasTooltip = true;
 
-	@Input() public monoPlaygroundCopyMe: string = '';
-	@HostBinding('class.has-tooltip') hasTooltip = true;
+    compRef!: ComponentRef<TooltipComponent> | null;
+    host: HTMLElement = this.element.nativeElement;
 
-	compRef!: ComponentRef<TooltipComponent> | null;
-	host: HTMLElement = this.element.nativeElement
+    constructor(private viewRef: ViewContainerRef, private element: ElementRef, private clipboard: Clipboard) {}
 
-    constructor(private viewRef: ViewContainerRef, private element: ElementRef, private clipboard: Clipboard) {
-		this.createTooltip();
+    ngOnInit(): void {
+	    this.createTooltip();
     }
 
-	createTooltip(): void {
-		this.compRef = this.viewRef.createComponent(TooltipComponent);
-		this.compRef.instance.content = "Click me to copy";
-		this.compRef.instance.isShowing = false;
-		this.setupHost(this.compRef);
-	}
+    createTooltip(): void {
+        this.compRef = this.viewRef.createComponent(TooltipComponent);
+        this.compRef.instance.content = 'Click me to copy';
+        this.compRef.instance.isShowing = false;
+        this.setupHost(this.compRef);
+    }
 
-	setupHost(compRef: ComponentRef<TooltipComponent>): void {
-		this.host.style.position = 'relative';
-		this.host.insertBefore(compRef.location.nativeElement, this.host.firstChild);
-	}
+    setupHost(compRef: ComponentRef<TooltipComponent>): void {
+        // This moves the created tooltip component INSIDE the host the directive is on.
+        this.host.style.position = 'relative';
+        this.host.insertBefore(compRef.location.nativeElement, this.host.firstChild);
+    }
 
-	@HostListener('click') click = () => {
-		const pending = this.clipboard.beginCopy(this.monoPlaygroundCopyMe);
-		if(pending.copy() && this.compRef){
-			const content = this.compRef.instance.content;
-			this.compRef.instance.content ='Gekopieerd!';
-			setTimeout(() => {
-				this.compRef && (this.compRef.instance.content = content);
-				this.compRef && (this.compRef.instance.isShowing = false);
-			}, 2000)
-		}
-	}
+    @HostListener('click') clickToCopy = () => {
+        const pending = this.clipboard.beginCopy(this.monoPlaygroundCopyMe);
+        if (pending.copy() && this.compRef) {
+            const content = this.compRef.instance.content;
+            this.compRef.instance.content = 'Gekopieerd!';
+            setTimeout(() => {
+                this.compRef && (this.compRef.instance.isShowing = false);
+                this.compRef && (this.compRef.instance.content = content);
+            }, 2000);
+        }
+    };
 
-	@HostListener('mouseover') activateTooltip = () => {
-		if(this.compRef) {
-			this.compRef.instance.isShowing = true;
-		}
-	}
+    @HostListener('mouseover') activateTooltip = () => {
+        if (this.compRef) {
+            this.compRef.instance.isShowing = true;
+        }
+    };
 
-	@HostListener('mouseout') deactivateTooltip = () => {
-		if(this.compRef) {
-			this.compRef.instance.isShowing = false;
-		}
-	}
-
+    @HostListener('mouseout') deactivateTooltip = () => {
+        if (this.compRef) {
+            this.compRef.instance.isShowing = false;
+        }
+    };
 }
