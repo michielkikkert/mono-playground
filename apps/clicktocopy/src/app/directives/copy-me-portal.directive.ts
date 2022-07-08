@@ -3,12 +3,7 @@ import { Overlay, OverlayPositionBuilder, OverlayRef } from '@angular/cdk/overla
 import { ComponentPortal } from '@angular/cdk/portal';
 import { TooltipPortalComponent } from '../tooltip-portal/tooltip-portal.component';
 import { Clipboard } from '@angular/cdk/clipboard';
-
-export type c2cConfig = {
-	hoverText?: string;
-	kopieText?: string;
-	copy?: string;
-}
+import { c2cConfig } from '../c2cConfig.model';
 
 @Directive({
     selector: '[monoPlaygroundCopyMePortal]',

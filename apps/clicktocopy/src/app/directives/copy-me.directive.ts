@@ -10,12 +10,13 @@ import {
 } from '@angular/core';
 import { TooltipComponent } from '../tooltip/tooltip.component';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { c2cConfig } from '../c2cConfig.model';
 
 @Directive({
     selector: '[monoPlaygroundCopyMe]',
 })
 export class CopyMeDirective implements OnInit {
-    @Input() public monoPlaygroundCopyMe = '';
+	@Input() monoPlaygroundCopyMe!: c2cConfig | undefined;
     @HostBinding('class.has-tooltip') hasTooltip = true;
 
     compRef!: ComponentRef<TooltipComponent> | null;
@@ -41,7 +42,9 @@ export class CopyMeDirective implements OnInit {
     }
 
     @HostListener('click') clickToCopy = () => {
-        const pending = this.clipboard.beginCopy(this.monoPlaygroundCopyMe);
+	    const copy = this.monoPlaygroundCopyMe?.copy || this.element.nativeElement.innerText || '';
+	    console.log({copy});
+        const pending = this.clipboard.beginCopy(copy);
         if (pending.copy() && this.compRef) {
             const content = this.compRef.instance.content;
             this.compRef.instance.content = 'Gekopieerd!';
