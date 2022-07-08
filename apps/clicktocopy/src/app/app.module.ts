@@ -10,7 +10,6 @@ import { TooltipPortalComponent } from './tooltip-portal/tooltip-portal.componen
 @NgModule({
     declarations: [AppComponent, CopyMeDirective, TooltipComponent, CopyMePortalDirective, TooltipPortalComponent],
     imports: [BrowserModule, OverlayModule],
-    exports: [CopyMeDirective],
     providers: [],
     bootstrap: [AppComponent],
 })
