@@ -5,6 +5,7 @@
         "formtest": "apps/formtest",
         "moduleless": "apps/moduleless",
         "tabs": "apps/tabs",
+        "template-form": "apps/template-form",
         "tooltip-directive": "apps/tooltip-directive"
     }
 }

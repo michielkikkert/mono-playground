@@ -37,7 +37,7 @@
             "skipTests": true
         }
     },
-    "defaultProject": "clicktocopy",
+    "defaultProject": "template-form",
     "$schema": "./node_modules/nx/schemas/nx-schema.json",
     "targetDefaults": {
         "build": {
