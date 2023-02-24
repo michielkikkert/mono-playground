@@ -1,28 +1,41 @@
-import { AfterContentInit, ContentChildren, Directive, EventEmitter, Input, Output, QueryList } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {
+	AfterContentInit,
+	ContentChildren,
+	Directive,
+	ElementRef,
+	EventEmitter,
+	Input,
+	Output,
+	QueryList
+} from '@angular/core';
+import { FormControl, FormGroup, FormGroupDirective } from '@angular/forms';
 import { myInputDirective } from './input-directive.directive';
 
 @Directive({
     selector: 'form[model]',
     standalone: true,
 })
-export class myFormDirective implements AfterContentInit {
+export class myFormDirective extends FormGroupDirective implements AfterContentInit {
     @Input() public model!: any;
     @Output() public modelChange: EventEmitter<any> = new EventEmitter<any>();
     @ContentChildren(myInputDirective) inputs!: QueryList<myInputDirective>;
+	public override form = new FormGroup({});
 
-    constructor(private form: NgForm) {
-		console.log(form);
+    constructor(private elem: ElementRef) {
+		console.log({elem});
+        super([], []);
     }
 
     ngAfterContentInit() {
-        this.inputs.toArray().forEach( input => {
-			input.input.nativeElement.value = this.model[input.input.nativeElement.name];
-			input.inputChange.subscribe( change => {
-				this.model[Object.keys(change)[0]] = Object.values(change)[0];
-				this.modelChange.emit(change);
-				console.log(this.model);
-			})
-        })
+        this.inputs.toArray().forEach((input: myInputDirective) => {
+			this.form.addControl(input.name, input.control);
+        });
+
+		console.log(this.form);
+
+		this.form.valueChanges.subscribe( form => {
+			this.modelChange.emit(form);
+			this.model = form;
+		})
     }
 }

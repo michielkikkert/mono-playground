@@ -1,24 +1,23 @@
-import { Directive, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Directive({
     selector: 'form input[name]',
     standalone: true,
 })
-export class myInputDirective implements OnInit {
-    @Input() public name = '';
+export class myInputDirective {
+    @Input() public name!: string;
+    public control: FormControl;
 
-    @Output() inputChange: EventEmitter<any> = new EventEmitter<any>();
-
-    constructor(public input: ElementRef) {}
-
-    ngOnInit() {
-		console.log(this.input);
+    constructor(private input: ElementRef) {
+        this.control = new FormControl<any>('');
+		this.control.setValue(input.nativeElement.value);
+		this.control.updateValueAndValidity();
     }
 
-    @HostListener('input', ['$event.target'])
-    onInput(el: HTMLInputElement) {
-        console.log(this.name);
-        this.inputChange.emit({ [this.name]: el.value });
+    @HostListener('input', ['$event.target.value'])
+    onInput(value: any): void {
+        this.control.setValue(value);
     }
 }
+

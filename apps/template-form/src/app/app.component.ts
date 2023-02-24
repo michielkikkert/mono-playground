@@ -1,4 +1,4 @@
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { myFormDirective } from './directives/form-directive.directive';
@@ -14,14 +14,23 @@ import { myInputDirective } from './directives/input-directive.directive';
 export class AppComponent {
     title = 'template-form';
 
+	public test = {
+		fn: () => {}
+	};
+
     public model = {
-        input1: 'input1',
+        input1: 'initial value',
         input2: '',
         input3: '',
         input4: '',
     };
 
     public modelChange = (value: any) => {
-        console.log(this.model);
+        this.model = {...value};
+		console.log('modelChange', this.model);
     };
+
+	submit() {
+		console.log(this.model);
+	}
 }

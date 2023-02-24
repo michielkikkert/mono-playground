@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 
@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
     standalone: true,
     imports: [CommonModule],
 })
-export class Test1Component implements OnInit {
+export class Test1Component implements OnInit, OnDestroy {
     @Input() id!: number;
     @Input() data$!: Observable<unknown>;
     @Output() deleteMe: EventEmitter<null> = new EventEmitter();
@@ -20,5 +20,10 @@ export class Test1Component implements OnInit {
 
     deleteComponent() {
         this.deleteMe.emit();
+    }
+
+    ngOnDestroy() {
+		console.log('destroy', this.data$);
+		this.data$ && this.data$
     }
 }

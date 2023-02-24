@@ -4,7 +4,7 @@ import {
     ViewChild,
     ViewContainerRef,
 } from '@angular/core';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject, share, Subscription, take } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -48,7 +48,7 @@ export class AppComponent implements OnDestroy {
     loadSharedData() {
         this.subs.push(
             this.http
-                .get(`https://jsonplaceholder.typicode.com/todos/${(Math. floor(Math. random() * 10) + 1)}` )
+                .get(`https://jsonplaceholder.typicode.com/todos/${(Math. floor(Math. random() * 10) + 1)}` ).pipe(take(1))
                 .subscribe((data) => this.data$.next(data))
         );
     }

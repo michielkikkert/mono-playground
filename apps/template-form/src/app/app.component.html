@@ -1,9 +1,9 @@
 Hello
 
-<form [model]="model" (modelChange)="modelChange($event)" ngForm>
-  <input name="input1" type="text" required/>
+<form [(model)]="model" (modelChange)="modelChange($event)">
+  <input name="input1" type="text" required value="set value"/>
   <input name="input2" type="text" required/>
   <input name="input3" type="text"/>
   <input name="input4" type="text"/>
-  <button type="submit">Submit</button>
+  <button type="submit" (click)="submit()">Submit</button>
 </form>
