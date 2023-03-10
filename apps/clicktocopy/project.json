@@ -1,4 +1,6 @@
 {
+    "name": "clicktocopy",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "projectType": "application",
     "sourceRoot": "apps/clicktocopy/src",
     "prefix": "mono-playground",
@@ -76,7 +78,7 @@
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/apps/clicktocopy"],
+            "outputs": ["{workspaceRoot}/coverage/apps/clicktocopy"],
             "options": {
                 "jestConfig": "apps/clicktocopy/jest.config.ts",
                 "passWithNoTests": true

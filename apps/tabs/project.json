@@ -1,4 +1,5 @@
 {
+    "name": "tabs",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "projectType": "application",
     "sourceRoot": "apps/tabs/src",
@@ -77,7 +78,7 @@
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/apps/tabs"],
+            "outputs": ["{workspaceRoot}/coverage/apps/tabs"],
             "options": {
                 "jestConfig": "apps/tabs/jest.config.ts",
                 "passWithNoTests": true
