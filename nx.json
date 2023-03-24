@@ -30,7 +30,7 @@
             "skipTests": true
         }
     },
-    "defaultProject": "template-form",
+    "defaultProject": "form-directives",
     "$schema": "./node_modules/nx/schemas/nx-schema.json",
     "targetDefaults": {
         "build": {

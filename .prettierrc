@@ -2,7 +2,9 @@
   "singleQuote": true,
   "overrides": [
     {
-      "files": ["**/*.html"],
+      "files": [
+        "**/*.html"
+      ],
       "options": {
         "singleQuote": false
       }
