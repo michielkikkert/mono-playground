@@ -2,23 +2,27 @@
 
 <mat-card>
   <mat-card-content>
-    <form class="example-form">
+    <form class="example-form" [formGroup]="form">
 
       <mat-form-field appearance="fill">
         <mat-label>Input</mat-label>
-        <input matInput>
+        <input matInput formControlName="test" type="gva">
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Select</mat-label>
-        <mat-select>
+        <mat-select formControlName="select">
           <mat-option value="one">First option</mat-option>
           <mat-option value="two">Second option</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Textarea</mat-label>
-        <textarea matInput></textarea>
+        <textarea matInput formControlName="textarea"></textarea>
       </mat-form-field>
+<!--      <button mat-fab extended (click)="">-->
+<!--        <mat-icon>home</mat-icon>-->
+<!--        Home-->
+<!--      </button>-->
     </form>
   </mat-card-content>
 </mat-card>
