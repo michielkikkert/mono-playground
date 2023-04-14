@@ -4,25 +4,52 @@
   <mat-card-content>
     <form class="example-form" [formGroup]="form">
 
-      <mat-form-field appearance="fill">
-        <mat-label>Input</mat-label>
-        <input matInput formControlName="test" type="gva">
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Select</mat-label>
-        <mat-select formControlName="select">
-          <mat-option value="one">First option</mat-option>
-          <mat-option value="two">Second option</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Textarea</mat-label>
-        <textarea matInput formControlName="textarea"></textarea>
-      </mat-form-field>
+
+<!--      <mat-form-field appearance="fill">-->
+<!--        <mat-label>Input</mat-label>-->
+<!--        <input matInput formControlName="test" type="gva">-->
+<!--      </mat-form-field>-->
+<!--      <mat-form-field appearance="fill">-->
+<!--        <mat-label>Select</mat-label>-->
+<!--        <mat-select formControlName="select">-->
+<!--          <mat-option value="one">First option</mat-option>-->
+<!--          <mat-option value="two">Second option</mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+<!--        <ng-select-->
+<!--          label="ng-select"-->
+<!--          style="width: 100%"-->
+<!--          formControlName="select"-->
+<!--          [items]="selectItems"-->
+<!--          type="autosuggest"-->
+<!--        ></ng-select>-->
+<!--      <maf-input type="gva"></maf-input>-->
+<!--      <maf-input type="bsn"></maf-input>-->
+<!--      <maf-input type="text" diakrieten></maf-input>-->
+<!--      <maf-select type="autosuggest" [options]="{clear: false}" collection="" [items]="items"></maf-select>-->
+<!--      <maf-select type="dropdown"></maf-select>-->
+<!--      <maf-select type="multiselect"></maf-select>-->
+
+
+<!--      <mat-form-field appearance="fill" >-->
+<!--        <input matInput value="test value" formControlName="test"/>-->
+<!--      </mat-form-field>-->
+
+      <maf-select style="width: 100%" type="autosuggest" label="maf select 1" [items]="selectItems" formControlName="select"></maf-select>
+
+      <maf-select style="width: 100%" type="autosuggest" label="maf select 2" [items]="selectItems" formControlName="test2"></maf-select>
+
+<!--      <mat-form-field appearance="fill">-->
+<!--        <mat-label>Textarea</mat-label>-->
+<!--        <textarea matInput formControlName="textarea"></textarea>-->
+<!--      </mat-form-field>-->
 <!--      <button mat-fab extended (click)="">-->
 <!--        <mat-icon>home</mat-icon>-->
 <!--        Home-->
 <!--      </button>-->
     </form>
+
+    {{ form.value | json }}
+
   </mat-card-content>
 </mat-card>

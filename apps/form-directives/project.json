@@ -16,7 +16,7 @@
                 "tsConfig": "apps/form-directives/tsconfig.app.json",
                 "inlineStyleLanguage": "scss",
                 "assets": ["apps/form-directives/src/favicon.ico", "apps/form-directives/src/assets"],
-                "styles": ["./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css", "apps/form-directives/src/styles.scss"],
+                "styles": ["./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css", "apps/form-directives/src/styles.scss", "./node_modules/@ng-select/ng-select/themes/material.theme.css"],
                 "scripts": []
             },
             "configurations": {
