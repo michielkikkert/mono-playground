@@ -1,8 +1,8 @@
-import { AfterViewInit, Directive } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Directive } from '@angular/core';
+import { DefaultValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-    selector: 'maf-select',
+    selector: 'maf-select, maf-input',
     standalone: true,
     providers: [
         {
@@ -12,19 +12,4 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
         },
     ],
 })
-export class CvaDirective implements ControlValueAccessor {
-    onChange: any = () => {};
-    onTouch: any = () => {};
-
-    registerOnChange(fn: any): void {
-        this.onChange = fn;
-    }
-
-    registerOnTouched(fn: any): void {
-        this.onTouch = fn;
-    }
-
-    setDisabledState(isDisabled: boolean): void {}
-
-    writeValue(value: any): void {}
-}
+export class CvaDirective extends DefaultValueAccessor {}
